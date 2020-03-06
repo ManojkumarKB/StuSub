@@ -1,0 +1,49 @@
+CREATE TABLE subject (
+  id int(12) auto_increment,
+  subject VARCHAR(100) NOT NULL,
+  stafflink VARCHAR(100) NOT NULL,
+  studentlink VARCHAR(100) NOT NULL,
+  PRIMARY KEY  (`id`)
+);
+
+insert into subject(subject,stafflink,studentlink) 
+values('tamil','www.bala.com/staff/tamilbooks','www.bala.com/student/tamilbooks');
+
+CREATE TABLE unit (
+  id int(12) auto_increment,
+  unitname VARCHAR(100) NOT NULL,
+  subjectid VARCHAR(100) NOT NULL,
+  unitno int (10) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=INNODB;
+
+insert into unit(unitname,subjectid,unitno) 
+values('tamil-history',1,1);
+
+CREATE TABLE topic (
+  id int (11) auto_increment,
+  topic_name VARCHAR(100) NOT NULL,
+  subjectid int (11) NOT NULL,
+  unit_id int (10) NOT NULL,
+  unit_no int (10) NOT NULL,
+  PRIMARY KEY  (`id`)
+);
+
+insert into topic(topic_name,unit_id,unit_no) 
+values('tamil vol 1',1,1);
+
+CREATE TABLE subtopic (
+  id int (11) auto_increment,
+  subtopic_name VARCHAR(100) NOT NULL,
+  subjectid int (11) NOT NULL,
+  topicid int (10) NOT NULL,
+  unitid int (11) NOT NULL,
+  topictype int (10) NOT NULL,
+  PRIMARY KEY  (`id`)
+);
+
+insert into subtopic(subtopic_name,topicid,topictype) 
+values('tamil thirukural',1,1);
+
+ALTER TABLE subtopic_topic DISABLE KEYS;
+insert into subtopic_topic values (1,1)
